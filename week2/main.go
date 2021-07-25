@@ -14,6 +14,7 @@ func main() {
 	r := gin.Default()
 	r.GET("/data", func(c *gin.Context) {
 		id := c.DefaultQuery("id", "")
+		// 模拟dao查询
 		data, err := dao.QuerySomethingFromDB(id)
 		if errors.Is(err, sql.ErrNoRows) {
 			c.JSON(http.StatusOK, gin.H{
